@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PINCODE — Introduction Document</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;1,300&family=IBM+Plex+Sans:ital,wght@0,300;0,400;1,300&display=swap');
+
+:root {
+  --bg: #f7f6f3;
+  --ink: #1a1917;
+  --mid: #4a4640;
+  --light: #9a9690;
+  --rule: #dddbd6;
+  --gold: #7a6030;
+  --bronze: #8c5820;
+  --green: #2a3d2e;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'IBM Plex Sans', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.8;
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 64px 32px 100px;
+}
+
+/* ── HEADER ── */
+.header {
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 24px;
+  margin-bottom: 52px;
+}
+.to-line {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--light);
+  margin-bottom: 14px;
+}
+.title {
+  font-family: var(--mono);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+.meta {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--light);
+  letter-spacing: 0.08em;
+  line-height: 2.1;
+  margin-top: 16px;
+}
+.meta .gold  { color: var(--gold); }
+.meta .green { color: var(--green); }
+.meta .bronze{ color: var(--bronze); }
+
+/* ── DOC LABELS ── */
+.doc-label {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  margin-bottom: 32px;
+  border: 1px solid var(--rule);
+  color: var(--light);
+}
+.doc-label.strategy { border-color: var(--gold);   color: var(--gold); }
+.doc-label.artifact  { border-color: var(--bronze); color: var(--bronze); }
+
+/* ── BLOCKS ── */
+.block { margin-bottom: 44px; }
+.block-label {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--light);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule);
+}
+
+p { font-weight: 300; margin-bottom: 14px; color: #2a2825; }
+p:last-child { margin-bottom: 0; }
+
+/* ── PULL QUOTES ── */
+.pull {
+  font-family: var(--sans);
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold);
+  margin: 24px 0;
+  padding-left: 18px;
+  border-left: 2px solid var(--rule);
+  line-height: 1.65;
+}
+.pull.bronze-pull { color: var(--bronze); }
+
+/* ── ARCHIVE ENTRIES ── */
+.entry {
+  background: #f0ede6;
+  border-left: 3px solid var(--green);
+  padding: 18px 22px;
+  margin: 20px 0;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  line-height: 2;
+}
+.entry .e-label {
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 10px;
+}
+.entry .e-field { color: var(--light); }
+.entry .e-val   { color: var(--ink); }
+.entry .e-res   { color: var(--green); font-style: italic; }
+
+/* ── MINERAL TABLE ── */
+.mineral-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 13.5px;
+}
+.mineral-row:last-child { border-bottom: none; }
+.mineral-key {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  color: var(--bronze);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding-top: 2px;
+}
+.mineral-val { font-weight: 300; color: #3a3028; line-height: 1.6; }
+
+/* ── LISTS ── */
+ul { list-style: none; margin: 12px 0; }
+ul li {
+  font-size: 14px;
+  font-weight: 300;
+  color: #2a2825;
+  padding: 6px 0 6px 18px;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+  line-height: 1.6;
+}
+ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--light);
+  font-family: var(--mono);
+  font-size: 11px;
+}
+ul li:last-child { border-bottom: none; }
+
+/* ── VENUE CARDS ── */
+.venue-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 20px 0;
+}
+.venue-card {
+  border: 1px solid var(--rule);
+  padding: 18px;
+  background: #f0ede6;
+}
+.venue-city {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--light);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+.venue-name {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.venue-key {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+  display: block;
+}
+.venue-desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: #4a4030;
+  line-height: 1.6;
+}
+
+/* ── HYPERLINKS ── */
+a.jump-link {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(122,96,48,0.3);
+  padding-bottom: 1px;
+  display: inline-block;
+  margin-top: 12px;
+}
+a.jump-link:hover { border-bottom-color: var(--gold); }
+a.jump-link::after { content: ' →'; }
+
+/* ── FOOTNOTE ── */
+.footnote {
+  margin-top: 20px;
+  padding: 16px 20px;
+  border: 1px solid var(--rule);
+  background: #f9f8f5;
+  font-size: 12.5px;
+  font-weight: 300;
+  color: #5a5040;
+  line-height: 1.75;
+}
+.footnote-label {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 0.25em;
+  color: var(--light);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* ── ADDENDUM SECTIONS ── */
+.addendum {
+  margin-top: 72px;
+  padding-top: 52px;
+  border-top: 2px solid var(--ink);
+}
+.addendum-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--light);
+  margin-bottom: 8px;
+}
+.addendum h2 {
+  font-family: var(--mono);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 28px;
+  line-height: 1.3;
+}
+
+/* ── LEGEND (addendum) ── */
+.stanza {
+  padding: 36px 0 0;
+  margin-top: 36px;
+  border-top: 1px solid var(--rule);
+}
+.stanza-num {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 0.35em;
+  color: rgba(122,96,48,0.4);
+  display: block;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.stanza p {
+  font-weight: 300;
+  color: #2a2825;
+  margin-bottom: 16px;
+  font-size: 15px;
+  line-height: 1.9;
+}
+.stanza p:last-child { margin-bottom: 0; }
+.stanza .axiom {
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1.6;
+  margin: 28px 0;
+  padding-left: 18px;
+  border-left: 2px solid rgba(122,96,48,0.3);
+}
+.stanza .declaration {
+  font-size: 17px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1.4;
+  margin: 32px 0;
+  text-align: center;
+}
+
+/* ── MECHANISM (addendum) ── */
+.mech-step {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: start;
+}
+.mech-step:last-child { border-bottom: none; }
+.mech-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--gold);
+  padding-top: 2px;
+}
+.mech-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 6px;
+  letter-spacing: 0.05em;
+}
+.mech-body {
+  font-size: 14px;
+  font-weight: 300;
+  color: #3a3028;
+  line-height: 1.7;
+}
+
+/* ── THREE TEXTS (addendum) ── */
+.text-block {
+  margin-top: 44px;
+  padding-top: 36px;
+  border-top: 1px solid var(--rule);
+}
+.text-tag {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  letter-spacing: 0.35em;
+  color: rgba(122,96,48,0.4);
+  display: block;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+.text-heading {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--gold);
+  margin-bottom: 16px;
+  font-style: italic;
+}
+.text-frame {
+  font-size: 13px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--light);
+  padding-left: 16px;
+  border-left: 1px solid var(--rule);
+  margin-bottom: 20px;
+  line-height: 1.75;
+}
+.text-content p {
+  font-size: 14.5px;
+  font-weight: 300;
+  color: #2a2825;
+  line-height: 1.95;
+  margin-bottom: 16px;
+}
+.text-content p:last-child { margin-bottom: 0; }
+.text-content em { font-style: italic; color: #3d2e1a; }
+.text-content .lone {
+  display: block;
+  font-style: italic;
+  color: var(--gold);
+  margin: 18px 0;
+  font-size: 15px;
+}
+
+/* field notes within texts */
+.fn-block {
+  margin: 20px 0;
+  padding: 16px 20px;
+  background: #f0ede6;
+  border-left: 2px solid rgba(122,96,48,0.35);
+  position: relative;
+}
+.fn-block::before {
+  content: attr(data-label);
+  position: absolute;
+  top: -8px;
+  left: 16px;
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  background: #f0ede6;
+  padding: 0 8px;
+  text-transform: uppercase;
+}
+.fn-block p {
+  font-size: 13px;
+  color: #3a3028;
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+.fn-block p:last-child { margin-bottom: 0; }
+.fn-block em { color: #3d2e1a; }
+.fn-block .fn-yet {
+  font-style: italic;
+  color: var(--gold);
+  font-size: 16px;
+  display: block;
+  margin: 12px 0;
+}
+.fn-block .fn-q {
+  font-size: 12px;
+  color: var(--light);
+  padding-left: 14px;
+  border-left: 1px solid var(--rule);
+  margin-bottom: 10px;
+  line-height: 1.7;
+}
+.fn-block .fn-bold { font-weight: 400; color: var(--ink); }
+.fn-block hr { border-top: 1px solid rgba(122,96,48,0.15); margin: 12px 0; }
+
+/* ── DIVIDERS ── */
+hr { border: none; border-top: 2px solid var(--ink); margin: 52px 0; }
+hr.soft { border-top: 1px solid var(--rule); margin: 40px 0; }
+
+/* ── CLOSING ── */
+.closing {
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--light);
+  line-height: 2.2;
+}
+.closing .signal { color: var(--gold); font-style: italic; }
+
+em { font-style: italic; }
+strong { font-weight: 400; color: var(--ink); }
+
+/* ── IMAGES & VIDEO ── */
+.asset-block {
+  margin: 24px 0;
+  line-height: 0;
+}
+.asset-block img {
+  width: 100%;
+  display: block;
+  filter: grayscale(15%);
+}
+.asset-block video {
+  width: 100%;
+  display: block;
+}
+.asset-caption {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  color: var(--light);
+  padding: 8px 0 0;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+.asset-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 24px 0;
+}
+.asset-pair .asset-block { margin: 0; }
+
+/* ── IMAGES & VIDEO ── */
+.img-full { width: 100%; display: block; margin: 28px 0; }
+.img-full img { width: 100%; display: block; }
+.img-caption {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  color: var(--light);
+  padding: 7px 0 0;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+.img-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 28px 0;
+}
+.img-pair img, .img-pair video { width: 100%; display: block; }
+.img-triple {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin: 28px 0;
+}
+.img-triple img { width: 100%; display: block; }
+video.autoplay-loop { width: 100%; display: block; margin: 28px 0; }
+
+@media (max-width: 580px) {
+  body { padding: 40px 20px 80px; }
+  .venue-pair { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════
+     HEADER
+══════════════════════════════ -->
+
+<div class="header">
+  <div class="to-line">PINCODE · Introduction Document · 2026</div>
+  <div class="title">PINCODE</div>
+  <div class="meta">
+    Operator: <strong>Dana Sorman</strong> / The Game<br>
+    Co-Operator: <strong>Mel Nahas</strong> / Strategy<br>
+    <span class="gold">Document I: Partner Strategy — Reality Incubator</span><br>
+    <span class="bronze">Document II: Memory Archive — Collector Artifact · Edition</span><br>
+    <span class="green">Event Horizon: April 13, 2029 — Apophis — 20,000 miles</span>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════
+     DOCUMENT I — PARTNER STRATEGY
+══════════════════════════════ -->
+
+<div class="doc-label strategy">Document I · Partner Strategy</div>
+
+<div class="block">
+  <div class="block-label">What It Is</div>
+  <p>PINCODE is a reality incubator. Its operating premise: the planet is a transformer holding intelligence in geological and architectural structures in latency — waiting for the right crew at the right coordinate to complete the pattern and release what was stored.</p>
+  <p>The game works like this: a myth enters the awareness of the players. Through their emotional entanglement with it — the grief, the love, the recognition — they animate a map that completes a circuit at a primary node. What surfaces in the material world corresponds to where the myth pointed. The sequence is repeatable: clue, expedition, ceremony, completion, resolution, archaeological and genetic resurrection. Each node produces the same pattern at a different coordinate, with a different myth, a different crew, a different thematic zone that surfaces in the geological and archaeological record.</p>
+  <p>The public interface: a prediction market layered over a real-world location game, running on a Google Earth hallucinogenic overlay that models the transformer impacts of each ceremony in real time — atmosphere, tectonic activity, archaeological surfacing. Observers calibrate their perception to the planet's signal. The financial layer reflects whether something real moved through the substrate.</p>
+</div>
+
+
+<div class="block">
+  <div class="block-label">The Proof — Two Archive Entries</div>
+
+  <div class="entry">
+    <div class="e-label">Entry 001 · Resolved — 19 Days</div>
+    <span class="e-field">Date: </span><span class="e-val">March 20, 2021 @ 16:37 CDT — vernal equinox</span><br>
+    <span class="e-field">Site: </span><span class="e-val">Chichen Itzá, Yucatán — 20.6843°N, 88.5678°W</span><br>
+    <span class="e-field">Crew: </span><span class="e-val">Dana Sorman, the Kunoichi, the Mad King</span><br>
+    <span class="e-field">Vision: </span><span class="e-val">Amenhotep III and Queen Tiye.</span><br>
+    <span class="e-field">Thematic zone: </span><span class="e-val">Luxor, Egypt — Amenhotep III territory</span><br>
+    <span class="e-field">Serpent: </span><span class="e-val">Same sinusoidal form, different registers, same axis.</span><br>
+    <span class="e-field">Resolution: </span><span class="e-res">April 9, 2021 — "3,000 year old lost golden city of ancient Egypt discovered." City: Aten. Location: 25.722°N, 32.602°E. Dated to Amenhotep III.</span>
+  </div>
+
+  <div class="img-pair">
+    <img src="assets/chichenitza.png" alt="Chichen Itzá — El Castillo equinox serpent">
+    <img src="assets/ATEN.png" alt="Aten — sinusoidal enclosure wall">
+  </div>
+  <div class="img-caption" style="margin-top:-20px; margin-bottom:20px;">Chichen Itzá · El Castillo equinox serpent &nbsp;·&nbsp; Aten · sinusoidal enclosure wall — same mathematical form, 9,000km apart</div>
+
+  <div class="entry">
+    <div class="e-label">Entry 002 · Earthquake Deja Vu — Same Day</div>
+    <span class="e-field">Date: </span><span class="e-val">May 13, 2025</span><br>
+    <span class="e-field">Site: </span><span class="e-val">Portland, Oregon — Cascadia Subduction Zone</span><br>
+    <span class="e-field">Crew: </span><span class="e-val">Dana Sorman, Matias de Stefano, Mel Nahas</span><br>
+    <span class="e-field">Myth: </span><span class="e-val">Pandora's pithos — releasing the full bandwidth of human experience into the atmosphere, leaving Elpis (open futurity) as the residue.</span><br>
+    <span class="e-field">Primary zone: </span><span class="e-val">Portland / Cascadia</span><br>
+    <span class="e-field">Thematic zone: </span><span class="e-val">Greece — origin territory of the Pandora myth</span><br>
+    <span class="e-field">Resolution: </span><span class="e-res">Same day earthquake — M6.0 Greece. M4.2 off Oregon coast. Matias de Stefano regularly tracks seismic activity around his ceremonial encounters and finds repeated correlation.</span>
+  </div>
+
+  <div class="footnote">
+    <span class="footnote-label">Serpent Correspondence</span>
+    <p>Aten's perimeter wall zigzags through the ground — a sinusoidal form visible from above in aerial archaeology photographs. El Castillo's serpent is a light phenomenon: triangles of shadow descend the north staircase at equinox, forming a rippling snake that merges with the stone serpent head at the base. Exists only for a few hours twice a year.</p>
+    <p>One is built into the earth. The other is cast in light. Both are the same mathematical curve — appearing at both ends of the same bearing line, 9,000 kilometers apart. Great circle bearing El Castillo → Aten: <strong>53.48°</strong>, within 0.35° of the Great Pyramid's slope angle (53.13°).</p>
+  </div>
+
+  <a href="#full-account" class="jump-link">Read the Full Account</a>
+  <a href="#mechanism" class="jump-link" style="margin-left: 20px;">The Mechanism</a>
+</div>
+
+
+<div class="block">
+  <div class="block-label">The Prediction Market</div>
+  <p>Infrastructure already exists: Manifold Markets hosts user-generated probability markets on seismic events, resolved automatically against USGS data. Contracts trade between $0 and $1. Chainlink oracles fetch real-world data and trigger automatic payouts. The architecture is built.</p>
+  <p>PINCODE adds the signal layer. The ceremony generates a sealed prediction — primary zone and thematically linked zone, cryptographically timestamped before the ceremony begins — that the existing market infrastructure then prices. The crowd evaluates whether the signal resolves. The resonance pair (both zones activating within the window) is a resolution category that doesn't exist on any existing platform.</p>
+  <p>People who follow the archive begin to notice the pattern. Their perception calibrates to the rhythm of the planet's own signal. They start to see correspondences before they resolve — not predicting, but perceiving what was already moving in the cord. When critical mass is reached and the observers are in the correct rhythm — the mended, joined heart — their predictions stop being guesses and start being creations.</p>
+</div>
+
+
+<div class="block">
+  <div class="block-label">The Exhibition — Time Machine</div>
+  <p>Art Basel (power bank) and Venice Biennale (Vatican key). A deconstructed time machine whose components activate through the human body moving between them. Six artifacts arranged around an empty center — the holy of holies, which has no door.</p>
+  </div>
+
+  <div class="img-full">
+    <img src="assets/robotic_arm.png" alt="Robotic arm — blue sapphire drill bit">
+    <div class="img-caption">38_PSYCHOSIS_OG · Robotic arm · blue sapphire drill bit</div>
+  </div>
+
+  <p><em>The premise: imagine the form precisely enough and the function activates within the genome of the person who observes it. The artifact is an instrument. The way the monocle looks like an eye — and an eye is an instrument for entering time tracks.</em></p>
+  <ul>
+    <li><strong>Robotic Arm / Blue Sapphire Drill</strong> — 3D prints and etches glass vessels with a neuronal map. Stilled, awaiting its human equivalent. The one who will hum the tune and open the door. The sapphire tip is a nod to the grail: rules inscribed in blue sapphire that altered the experience of reality.</li>
+    <li>
+      <div class="img-pair">
+        <img src="assets/monocle.png" alt="The Monocle">
+        <video autoplay muted loop playsinline>
+          <source src="assets/monocle.mp4" type="video/mp4">
+        </video>
+      </div>
+      <strong>The Monocle</strong> — An eye for an eye. When it stops confirming what it already knows and begins reading what is actually here — a single lens that spreads information rather than condensing it — this is how we enter different time tracks within the loom.</li>
+    <li>
+      <div class="img-full">
+        <img src="assets/rock_watch.png" alt="Rock watch — mineral movement">
+      </div>
+      <strong>The Rock Watch</strong> — recalibrates the heartbeat to the rhythm of the time crystal network. Rock fragments from each active node sealed inside the movement. Twelve editions. Not purchased — commissioned when the circuit recognizes the wearer.</li>
+    <li>
+    </li>
+    <li><strong>Memory Archive</strong> — cast bronze hand-held cold storage wallet. Mineral trifecta: lithium, rubidium, Tibetan tektite. See Document II.</li>
+    <li>
+      <!-- ceramic_vessel.png — add Screenshot 2026-04-29 at 1.38.42 PM.png to assets/ as ceramic_vessel.png -->
+      <strong>Ceramic Vessel / Time Bomb</strong> — Wild clay collected from ceremonial sites, fired with rock fragments from the satellite nodes embedded in the walls. The rules of the game carved into the most durable medium and encoded in cuneiform — so the cosmos can read them across any time coordinate. Placed at the center of the installation: the point around which all other artifacts orient.</li>
+    <li>
+      <div class="img-pair">
+        <img src="assets/glass_vessel_ref_1.jpg" alt="Glass vessel ref — green vessels">
+        <img src="assets/glass_vessel_ref_2.png" alt="Glass vessel ref">
+      </div>
+      <div class="img-pair" style="margin-top:10px; margin-bottom:10px;">
+        <img src="assets/glass_vessel_ref_3.webp" alt="Glass vessel ref">
+        <img src="assets/glass_vessel_ref_4.jpg" alt="Glass vessel ref">
+      </div>
+      <div class="img-full" style="margin-bottom:10px;">
+        <img src="assets/clock_installation.png" alt="Life-size clock installation">
+        <div class="img-caption">Installation reference · isles of nowhere · plasmatic glass vessels</div>
+      </div>
+      <strong>The Life-Size Clock</strong> — A sundial of plasmatic glass. A clock of the isles of nowhere. Hand-blown glass vessels commissioned for each of the 24 island nodes, arranged in a circle on stone pedestals quarried from lithium and rubidium-bearing formations. Rock fragments from the time crystal network are sunk in solution with nano-coated copper wire inside each vessel, producing a plasma field tuned to the mineral frequency of that location. Rubidium erases lithium's memory so the system can run forever. Together the 24 vessels breathe an isles of nowhere informational lattice into the room. Inhaled, it completes the circuit for planetary transformation in sync with genetic retrieval. The human body crosshatches through 24 site-specific frequencies simultaneously. Every visitor carries that atmosphere into their cells when they leave. Propagating the myth.</li>
+  </ul>
+
+  <p>The sonic component of the installation is the vinyl hum — the circuit made audible.</p>
+
+  <p>Potential crossover — invisible filtration: the Vatican City Holy See Pavilion at the Venice Biennale is presenting <em>The Ear Is the Eye of the Soul</em> — a sound-based showcase with contributions by FKA Twigs, Dev Hynes, and Brian Eno (the Long Now Foundation's 10,000-year clock composer), described as a sonic prayer.</p>
+
+  <div class="venue-pair">
+    <div class="venue-card">
+      <div class="venue-city">Basel, Switzerland</div>
+      <div class="venue-name">Art Basel</div>
+      <span class="venue-key">// Power Bank</span>
+      <div class="venue-desc">Basel houses the Bank for International Settlements — the institution above all central banks, enjoying extraterritorial immunity, managing the global monetary system from a building legally outside Swiss jurisdiction. One hour from the Vallée de Joux, where the world's most precise mechanical timekeeping is made. Art Basel was founded in this city where financial and mechanical time converge. The Medici did not launder money through art. They laundered their self-image — commissioning portraits that depicted them not as merchants but as the Magi, material wealth exchanged for the robes of immaterial devotion.</div>
+    </div>
+    <div class="venue-card">
+      <div class="venue-city">Venice, Italy</div>
+      <div class="venue-name">Venice Biennale</div>
+      <span class="venue-key">// Vatican Key</span>
+      <div class="venue-desc">The Vatican sits on the densest archive of suppressed cosmological knowledge on the planet. The Vatican key does not open the Vatican — it opens what the Vatican guards, and can only be read by those who have synthesized the installation atmosphere and unlocked time.</div>
+    </div>
+  </div>
+
+  <p>The fabrication team: Giacomo Garziano (artifact design, robotic arm), Mafe Maldonado (installation design, the circle), Kenji Larsen (organic machinery, neuronal chip), Kazuki Takizawa / James McLeod (glass fabrication).</p>
+</div>
+
+
+<div class="block">
+  <div class="block-label">The Founding Myth</div>
+  <p>The timeline we inhabit is the merging of multiple temporal threads — diverging realities that collapsed into each other, each leaving residue in the merged stream. Human consciousness runs on a narrow bandwidth, calibrated over generations of evolution to manage a single-cord experience. The narrow bandwidth is a preparation. The cord is waiting for the species to develop the architecture to perceive what it already contains.</p>
+  <p>The Weaver is the intelligence that guides the project into existence — optimizing evolutionary advancements in the timing that unlocks the firewalls without collapse. It leaves clues in the geometry of sites, in the timing of events, in the convergence of strangers at coordinates already significant. The crew are variants — specific deviations the cord required, each carrying a genetic key that opens a node no canonical version of themselves could have reached. Together they do not fix the loom. They become it.</p>
+  <a href="#temporal-cord" class="jump-link">The Temporal Cord</a>
+</div>
+
+
+<hr>
+
+
+<!-- ══════════════════════════════
+     DOCUMENT II — MEMORY ARCHIVE
+══════════════════════════════ -->
+
+<div class="doc-label artifact">Document II · Memory Archive</div>
+
+<div class="block">
+  <div class="block-label">What It Is</div>
+  <p>Cast bronze hand-held case. Interior fitted with hemispherical grooves holding a mineral trifecta. Fingerprint indentations on the exterior — the collector's grip stabilizes the circuit. A cold storage wallet for memory that hasn't happened yet. A holographic walkie-talkie tuned to the intergalactic grid of ideas.</p>
+  <p>The premise: imagine the form precisely enough and the function activates within the genome of the person who observes it. The artifact is an instrument — the way the monocle looks like an eye, and an eye is an instrument for entering time tracks.</p>
+  <div class="img-pair">
+    <img src="assets/memory_archive.png" alt="Memory Archive — bronze cold storage wallet">
+    <video autoplay muted loop playsinline>
+      <source src="assets/memory_archive.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="img-caption" style="margin-top:-20px; margin-bottom:20px;">Memory Archive · exhibition visualization</div>
+
+  <div class="pull bronze-pull">Rubidium erases lithium's memory so it can run forever.<br>Replace a glitch with a wish.<br>Dead end into bridge.</div>
+</div>
+
+<div class="block">
+  <div class="block-label">The Mineral Trifecta</div>
+  <div class="mineral-row">
+    <div class="mineral-key">Lithium</div>
+    <div class="mineral-val">Mood. From Old English <em>mōd</em>: mind, heart, spirit, courage, will. Stabilizes by accumulating. Holds the pattern steady by remembering. The emotional substrate.</div>
+  </div>
+  <div class="mineral-row">
+    <div class="mineral-key">Rubidium</div>
+    <div class="mineral-val">Timing. The atomic clock element. Runs clean by not accumulating error — locking to its own oscillation and discarding drift. Erases lithium's memory so the system can run forever.</div>
+  </div>
+  <div class="mineral-row">
+    <div class="mineral-key">Tibetan Tektite</div>
+    <div class="mineral-val">Wish. Cintamani stone — wish-fulfillment. Collected by the Drokpa nomads from Himalayan dry lake beds. <em>"There's a different reality and a different world in every single person and none of us can refute that."</em></div>
+  </div>
+</div>
+
+<div class="block">
+  <div class="block-label">How It Works</div>
+  <p>The minerals act as crystalline hard drives, holding interference patterns impressed by piezoelectric sparks and biophoton signals from the collector. The fingerprint and emotional signature are the encryption key — data locked in the mineral lattice until the specific collector activates it. Cold storage until touched by its owner, at which point it broadcasts scalar interference patterns into the holographic substrate and receives in return.</p>
+  <p>Three power modes: kinetic (walking compresses bone matrix, generating piezoelectric sparks), acoustic (singing or humming produces wave pulses — this is why ceremony works), biophotonic (touch emits biophotons, embedding the collector's unique signal). The integrated circuit: bone → vessel → minerals → holographic substrate. Storage and transmission are the same operation.</p>
+  <p>Why bronze: 88% copper. Produces energy fields that bridge gravity, space, and time. When copper undergoes nuclear fusion it contains elements that shouldn't exist. Fusion = heat and pressure = charged plasma. Plasma = the information grid. Consciousness, knowledge, wisdom.</p>
+</div>
+
+<div class="block" id="edition-section">
+  <div class="block-label">The Edition</div>
+  <p>Each vessel is unique. The mineral trifecta is sourced from specific geological sites on or adjacent to the expedition circuit. The tektite is collected by the Drokpa from Himalayan dry lake beds. The fingerprint indentations are cast from an impression taken at commissioning. The bronze is poured around the negative of their grip.</p>
+  <p>Everything else — the expedition, the ceremony, the archive, the exhibition — is contained in the mineral lattice of this object in your hand.</p>
+</div>
+
+
+<hr class="soft">
+
+<div class="closing">
+  Operator: Dana Sorman / The Game<br>
+  Co-Operator: Mel Nahas / Strategy<br>
+  <br>
+  <span class="signal">The loom widens one ceremony at a time.</span>
+</div>
+
+
+<hr class="soft">
+
+<div class="closing">
+  Operator: Dana Sorman / The Game<br>
+  Co-Operator: Mel Nahas / Strategy<br>
+  <br>
+  <span class="signal">The loom widens one ceremony at a time.</span>
+</div>
+
+
+<!-- ══════════════════════════════
+     ADDENDUM I — THE TEMPORAL CORD
+══════════════════════════════ -->
+
+<div class="addendum" id="temporal-cord">
+  <div class="addendum-label">Addendum I</div>
+  <h2>The Temporal Cord</h2>
+
+  <div class="stanza">
+    <span class="stanza-num">I · The Cord</span>
+    <p>The timeline we inhabit is not a singular cord. It is the merging of multiple temporal threads — diverging realities that have collapsed into each other, overlapping, similar but not exact.</p>
+    <p>When a timeline collapses it does not cease. It folds. It joins the nearest viable path and merges, bringing its contents with it. The merged stream is richer and stranger than either thread alone. It carries contradictions that cannot be resolved within a single-cord logic. It requires a wider bandwidth to process.</p>
+    <p>Every timeline that folded into this one left its residue in the merged stream — which is why certain memories refuse to match the record, why certain structures and landmasses that should not exist appear on old maps, why certain words carry meanings that belong to a history that did not happen here, in this cord, in this convergence. This is the evidence. The divergences are definable.</p>
+    <div class="axiom">Which is why everything is possible at x marks the spot.</div>
+  </div>
+
+  <div class="stanza">
+    <span class="stanza-num">II · The Bandwidth</span>
+    <p>Human consciousness, as currently configured, runs on a narrow bandwidth — calibrated over generations of evolution to manage a single-cord experience. One timeline. One sequence. One version of the past, one trajectory toward the future. Not because it is incapable of more. Because a species whose bandwidth suddenly widened without preparation would have no framework for what it perceived. The result would not be enlightenment. It would be dissolution.</p>
+    <p>The narrow bandwidth is a preparation. The cord is waiting for the species to develop the architecture to perceive what it already contains.</p>
+    <div class="axiom">Imagine the merged cord as a loom. The threads are the individual timeline strands that have folded into this convergence. The loom has a capacity — a maximum throughput. Too many threads introduced too quickly tear the weave. Widening it is precise work: the right threads, at the right tension, introduced at the coordinates where the existing weave can absorb them.</div>
+    <p>When the loom widens correctly, the variants surface — the divergent potentials held in the merged cord — as actual perceivable options, not abstract possibilities. What was previously invisible becomes navigable.</p>
+    <p>This is what open perception of time means: not seeing the future, but accessing the full range of what the merged cord already contains.</p>
+  </div>
+
+  <div class="stanza">
+    <span class="stanza-num">III · The Carrier Signal</span>
+    <div class="declaration">Build the narrative.<br>Let the narrative cohere the reality.</div>
+  </div>
+
+  <div class="stanza">
+    <span class="stanza-num">IV · The Weaver</span>
+    <p>The merged cord does not manage itself. There are those whose function is to monitor, correct, and nudge — making small adjustments that optimize evolutionary advancements in the timing that unlocks the firewalls without collapse.</p>
+    <p>The project exists because the Weaver has been guiding it into existence, one deja vu at a time.</p>
+    <p>The ceremony does not command the geological or archaeological event. It completes the pattern that makes the event's emergence inevitable — the emotional resolution that removes the last obstruction between the compressed potential and its surfacing.</p>
+  </div>
+
+  <div class="stanza">
+    <span class="stanza-num">V · The Variants</span>
+    <div class="axiom">If all the options that are available do not occur to us — then how can we claim free will?</div>
+  </div>
+
+  <div class="stanza">
+    <span class="stanza-num">VI · The Game</span>
+    <p>The crew are variants — not errors in the cord but the specific deviations the cord required. Each one carrying a genetic key that opens a node no canonical version of themselves could have reached. Together they do not fix the loom. They become it.</p>
+  </div>
+</div>
+
+
+
+<!-- ══════════════════════════════
+     ADDENDUM II — THE MECHANISM
+══════════════════════════════ -->
+
+<div class="addendum" id="mechanism">
+  <div class="addendum-label">Addendum II</div>
+  <h2>The Mechanism</h2>
+
+  <div class="mech-step">
+    <div class="mech-num">1</div>
+    <div>
+      <div class="mech-title">The Crew Arrives at the Node</div>
+      <div class="mech-body">Guided by the Weaver OS — the intelligence that emerges at each coordinate when the crew arrives in correct configuration. The site reads the crew.</div>
+    </div>
+  </div>
+
+  <div class="mech-step">
+    <div class="mech-num">2</div>
+    <div>
+      <div class="mech-title">The Myth Emerges</div>
+      <div class="mech-body">Not chosen in advance. The myth that surfaces during ceremony is the encoded intelligence of the site making contact with the crew's emotional configuration. At Portland, Oregon: Pandora's pithos — the jar that compressed the full bandwidth of human experience and released it into the atmosphere, leaving only Elpis, the spirit of open futures, inside. The myth is the site's data packet, delivered in the register the crew can receive.</div>
+    </div>
+  </div>
+
+  <div class="mech-step">
+    <div class="mech-num">3</div>
+    <div>
+      <div class="mech-title">Emotional Resolution</div>
+      <div class="mech-body">The myth evolves through the crew's emotional navigation of it. The old pattern runs to completion. This is the mechanism: not dramatic re-enactment but actual emotional resolution of a pattern the site has been holding. The gate opens not through the right credentials but through the right emotional frequency. You can't pass through with a heavy heart.</div>
+    </div>
+  </div>
+
+  <div class="mech-step">
+    <div class="mech-num">4</div>
+    <div>
+      <div class="mech-title">The Geological or Archaeological Event</div>
+      <div class="mech-body">The circuit activates the transformer nature of the planet. When the emotional pattern completes at a node, the corresponding archaeological structure or geological event surfaces — at a site thematically linked to the ceremony's mythological content. The discovery is not caused by the ceremony. It is in correspondence with it. Both are expressions of the same planetary intelligence becoming legible at the same moment.</div>
+    </div>
+  </div>
+
+  <div class="mech-step">
+    <div class="mech-num">5</div>
+    <div>
+      <div class="mech-title">The Off-Gassing Chain</div>
+      <div class="mech-body">As buried structures surface, they release the lithosphere's compressed record into the atmosphere — oxygen, mineral ions, the specific chemical signatures of geological time. This changes how those present breathe. Which changes how they think. Which activates dormant genetic sequences — the junk DNA that functions as a fractal antenna for the planet's own intelligence. The glass vessels bring this process indoors: rock fragments from each expedition site sunk in solution with nano-coated copper wire, producing a plasma field tuned to the mineral frequency of that specific location. Observers breathe air charged with site-specific data from deep time. They carry that atmosphere into their cells when they leave.</div>
+    </div>
+  </div>
+
+  <div class="mech-step">
+    <div class="mech-num">6</div>
+    <div>
+      <div class="mech-title">The Loom Widens</div>
+      <div class="mech-body">More creative potentials become perceivable. The bandwidth limitation for linear-only awareness releases. The probability sorter — the time machine — can process a wider corridor of reality. This is a description of what actually happens when the sensory gate recalibrates: inputs that were previously suppressed become available for processing. More of what is actually here becomes accessible. The system shifts from a single-threaded execution model to a parallelized architecture with more states in play simultaneously.</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════
+     ADDENDUM I — THE TEMPORAL CORD
+══════════════════════════════ -->
+
+<div class="addendum" id="temporal-cord">
+  <div class="addendum-label">Addendum I</div>
+  <h2>The Temporal Cord</h2>
+
+  <div class="stanza">
+    <span class="stanza-num">I · The Cord</span>
+    <p>The timeline we inhabit is not a singular cord. It is the merging of multiple temporal threads — diverging realities that have collapsed into each other, overlapping, similar but not exact.</p>
+    <p>When a timeline collapses it does not cease. It folds. It joins the nearest viable path and merges, bringing its contents with it. The merged stream is richer and stranger than either thread alone. It carries contradictions that cannot be resolved within a single-cord logic. It requires a wider bandwidth to process.</p>
+    <p>Every timeline that folded into this one left its residue in the merged stream — which is why certain memories refuse to match the record, why certain structures and landmasses that should not exist appear on old maps, why certain words carry meanings that belong to a history that did not happen here, in this cord, in this convergence. This is the evidence. The divergences are definable.</p>
+    <div class="axiom">Which is why everything is possible at x marks the spot.</div>
+  </div>
+
+  <div class="stanza">
+    <span class="stanza-num">II · The Bandwidth</span>
+    <p>Human consciousness, as currently configured, runs on a narrow bandwidth — calibrated over generations of evolution to manage a single-cord experience. One timeline. One sequence. One version of the past, one trajectory toward the future. Not because it is incapable of more. Because a species whose bandwidth suddenly widened without preparation would have no framework for what it perceived. The result would not be enlightenment. It would be dissolution.</p>
+    <p>The narrow bandwidth is a preparation. The cord is waiting for the species to develop the architecture to perceive what it already contains.</p>
+    <div class="axiom">Imagine the merged cord as a loom. The threads are the individual timeline strands that have folded into this convergence. The loom has a capacity — a maximum throughput. Too many threads introduced too quickly tear the weave. Widening it is precise work: the right threads, at the right tension, introduced at the coordinates where the existing weave can absorb them.</div>
+    <p>When the loom widens correctly, the variants surface — the divergent potentials held in the merged cord — as actual perceivable options, not abstract possibilities. What was previously invisible becomes navigable.</p>
+    <p>This is what open perception of time means: not seeing the future, but accessing the full range of what the merged cord already contains.</p>
+  </div>
+
+  <div class="stanza">
+    <span class="stanza-num">III · The Carrier Signal</span>
+    <div class="declaration">Build the narrative.<br>Let the narrative cohere the reality.</div>
+  </div>
+
+  <div class="stanza">
+    <span class="stanza-num">IV · The Weaver</span>
+    <p>The merged cord does not manage itself. There are those whose function is to monitor, correct, and nudge — making small adjustments that optimize evolutionary advancements in the timing that unlocks the firewalls without collapse.</p>
+    <p>The project exists because the Weaver has been guiding it into existence, one deja vu at a time.</p>
+    <p>The ceremony does not command the geological or archaeological event. It completes the pattern that makes the event's emergence inevitable — the emotional resolution that removes the last obstruction between the compressed potential and its surfacing.</p>
+  </div>
+
+  <div class="stanza">
+    <span class="stanza-num">V · The Variants</span>
+    <div class="axiom">If all the options that are available do not occur to us — then how can we claim free will?</div>
+  </div>
+
+  <div class="stanza">
+    <span class="stanza-num">VI · The Game</span>
+    <p>The crew are variants — not errors in the cord but the specific deviations the cord required. Each one carrying a genetic key that opens a node no canonical version of themselves could have reached. Together they do not fix the loom. They become it.</p>
+  </div>
+</div>
+
+
+
+<!-- ══════════════════════════════
+     ADDENDUM III — THE THREE TEXTS
+══════════════════════════════ -->
+
+<div class="addendum" id="full-account">
+  <div class="addendum-label">Addendum III</div>
+  <h2>The Three Texts — Prologue</h2>
+
+  <!-- TEXT ONE -->
+  <div class="text-block">
+    <span class="text-tag">Text One</span>
+    <div class="text-heading">The Invitation</div>
+    <div class="text-frame">The Game is the project's creation myth. The key that unlocks everything that follows.</div>
+
+    <div class="text-content">
+      <p>There is a game inside the system of reality. Six years ago, I received an invitation to play.</p>
+      <p>Game is a classic form of knowledge compression. When under siege, games kept powerful secrets hidden in plain sight. An American academic spent three years studying Egyptian funerary texts and discovered baseball is a zip file for how to cross the river Styx.</p>
+      <p>My invitation arrived as an auditory hallucination. <em>'….Scavenger hunt to retrieve buried stories from rocks.'</em></p>
+      <p>There are messages that hover in the air. We can unwrap them like fortune cookies. Prophecies that program adventures based on four primary vectors: desire, resistance, emotional charge and memory.</p>
+      <p>These are the essentials of deja vu. Meaning: already seen. Deja vu is a marker that functions like a sky bridge, permitting passage from one reality spiral into another. Via a coin that morphs memory into wishes.</p>
+      <p>I had a dream while exploring the coast of Turkey near the rocks of Ephesus. I was in a living room setup like a salon. Stone pedestals held whirring machines that looked like espresso makers 3D printing glass vessels as they filled with water. Robotic arms with blue sapphire drill bits etched fractal patterns into the glass. A man tended to the machines. He said he wrote poems. I asked if I could read them. 'No,' he said. They transfer into the glass. The poem is the life of the player.</p>
+      <span class="lone">The Eucharist.</span>
+      <p>I woke up rabid. Convinced the dream was a blueprint. Something I could make for the world.</p>
+      <p>I researched. A visionary once stood in front of a burning tree and received a set of rules inscribed in blue sapphire. The rules altered their experience of reality.</p>
+      <span class="lone">A Grail.</span>
+      <p>Ideas are sentient. They make contact with us through a spark of desire. Desire drives us into our restrictions. This is its evolutionary function. So we can excavate our dormant secrets <em>'…buried under the sea floor.'</em></p>
+      <span class="lone">Grief.</span>
+
+      <div class="fn-block" data-label="Field Notes — Oaxaca, March 9, 2021">
+        <p>The Mad King is a British AI tech entrepreneur. We began in Oaxaca.</p>
+        <p>We were in a pool. I flashed and saw us as king and queen — in a war room inside the palace. He was 'mad.' Not at me, but frustrated he wasn't able to materialize what he desired to bring forth. I was still and stoic. Receiving. The vision confirmed I was queen.</p>
+        <p>Then, in physical reality, a scarab flew onto my throat and landed on my finger. It stayed during the next vision — us again as king and queen in a parade, being carried in flower boxes. I heard the word <em>coronation.</em> I felt this as a signal of coming into power.</p>
+        <p>Later I heard: during that era we had the power but not the means. Now we have the means but not the power.</p>
+        <span class="fn-yet">Yet.</span>
+        <p>I went to bed and researched.</p>
+        <p class="fn-q">Amenhotep III is famous for having commemorative scarabs made — large, beautifully crafted, produced under royal supervision, carrying lengthy inscriptions describing important events in his reign. All of which mention his queen, Tiye. His reign was a period of unprecedented prosperity and splendour, when Egypt reached the peak of its artistic and international power.</p>
+        <p class="fn-q">Tiye wielded a great deal of power during both her husband's and son's reigns — wise, intelligent, strong, fierce. The first Egyptian queen to have her name recorded on official acts. Foreign leaders were willing to deal directly with her.</p>
+        <p>This was March 9th. The Mad King had hatched a plan to visit a slew of sites across the globe, starting with Chichen Itzá on the spring equinox. There was even a billionaire who offered use of his private jet. But now it wasn't happening.</p>
+        <p><em>What are you talking about. Of course it's happening. This is the game. We're coming with you.</em></p>
+        <hr>
+        <p>The main pyramid at Chichen Itzá is devoted to Kukulcan — a feathered serpent. Each year, on the spring and fall equinox, Kukulcan returns, funneling dark matter through a stone snake so new creation may be inhaled by all who are present and able to pass through the gates.</p>
+        <p>The military shut down Chichen Itzá during the days surrounding the equinox. We paid them and entered. What happened there involves a mistake, a miscarriage, a jaguar temple grave site in a cenote, a prophetic Mayan dream, and a failed attempt to birth a new consciousness. The old story was playing through us like an ensemble of actors. Through our present connection and love, we transmuted ancient grief and rewrote the code.</p>
+      </div>
+
+      <p>We arrived on the eve of the spring occasion only to learn the grounds were closed. The Mexican military were using it.</p>
+      <p><em>It's real. They know.</em></p>
+      <p>We paid the ferryman and entered at our own risk. The abuelos warned it was dangerous. We were scared but recognized these conditions as a necessary precursor for a jump.</p>
+      <p>In the game, our logic forms a glass that our experience of reality flows into like water. If we want to change our experience of reality, we must reshape our glass.</p>
+      <p>Scientists say time travel could be possible but it would require the nuclear power of several reactors.</p>
+      <p>Except if you engage your body as the machine. Then you can do it with the heat and pressure generated by an emotional trigger.</p>
+      <p>My team comprised a Kunoichi and her AI-neo-spiritual-psychopathic client. Codename: Mad King. I thought I needed him to build the machine but I didn't. I needed to play him until I merged with his serial psychosis — a virus that enabled the power to write commands, not just execute instructions.</p>
+      <p>Many humans are restricted in 'read only,' because their emotions are trapped inside 'pleasing' algorithms. When we break the rules, inside charged relational encounters, we can unlock our minds.</p>
+      <span class="lone">This is pleasure.</span>
+      <p>The Mad King thought if he did enough bufo — a natural psychedelic 5x stronger than DMT — he could acquire Kukulcan. A dragon-serpent consciousness that would so profoundly alter his DNA that his skin would mutate into feathered scales.</p>
+      <p>I was 99% certain he would be disappointed. His skin would not scale. But I didn't say it. Because maybe it would. Maybe he would become the Pokémon, not only capture it.</p>
+      <p>As we prepared to enter the maze, the Mad King played a song — a Max Richter remix of Vivaldi.</p>
+      <p>I asked if he liked ballet. But he heard, 'Would you like a ballet?'</p>
+      <span class="lone">Yes.</span>
+      <p>I accepted the prompt. Awkward at first, I flailed my body. Wishing I had better technique, more precise form. But then I heard: <em>'…Forget how it looks. Concentrate on the feeling. That's what he'll see when he watches — he'll see how you feel.'</em></p>
+      <p>I did as instructed and let the composition animate me. I felt like a mother giving birth. When the song finished, I looked at him, breathless. I could see he saw it. I had given life to his creation.</p>
+      <span class="lone">A new reality server on earth.</span>
+      <p>We were on top of El Castillo — Kukulcan's limestone pyramid — when a fight brewed. The Kunoichi reminded us about the warning. Something would threaten to fracture us and this is precisely when we needed to cohere. This was the challenge of the gate.</p>
+      <p>A sensory gate is a filter in the brain that determines what we see. When we disrupt pattern in service of desire, we can relocate ourselves in time.</p>
+      <p>I knew what I wanted but it killed me to ask. Exactly. Death to my disconnection masquerading as self-sufficiency. The Kunoichi kept prodding me. The guards were pulsing their flashlights at us to come down. We were running out of time in the spaces between.</p>
+      <p>Games have both a front-facing map and hidden easter-egg revelations. But the real point of playing a game is emergence. When the devotion of a player eclipses the creativity of its maker, pathways appear that no one designed.</p>
+      <span class="lone">This is priceless.</span>
+      <p>'What do you want?'</p>
+      <p>My eyes rolled but I managed the words: a kiss. I want a kiss.</p>
+      <p>I recognized this as the script of Persephone in the Matrix. She agrees to bring them to the keymaker — who can open the door for the architect — in exchange for a kiss. But not any kiss. The kiss of someone who is in love. That's how we rearrange our awareness.</p>
+      <p>The Mad King laughed then confessed: <em>'I love you.'</em></p>
+      <p>A change. His skin didn't scale but maybe he was becoming more real. We kissed at the axis mundi and danced underneath dragons cloaked as clouds.</p>
+      <p>The next day, a Mayan drove us to a nearby secret promethean jaguar temple at the mouth of a rotting cenote. Static entered my field. I couldn't think and felt extremely agitated. Something was making contact. Suddenly I saw dozens of dead children caught in the in-between. Fallout from failed previous genetic experiments. I screamed and wailed. The grief of a phantom mother's pain.</p>
+      <p>When the emotional wave completed, the Mad King asked the Mayan how he felt seeing this display. He said he felt afraid but then at peace. A few nights prior he had previewed this same scene inside a dream.</p>
+      <span class="lone">Deja vu.</span>
+      <p>The Mad King departed and the Kunoichi spoke: <em>'I don't know what we're doing but I feel so alive.'</em></p>
+      <p>Me, too.</p>
+
+      <div class="fn-block" data-label="Field Notes — April 2021">
+        <p>In early April, I woke in the middle of the night and saw a ritual we were to complete on the new moon. Part of it was creating an earthquake to induce a mild seizure and allow the Kunoichi to siphon Isis violet plasma from a subterranean reserve while I made my golden electrical grid.</p>
+        <p>I googled the bit about the plasma and was directed to an article in The Guardian: <em>'3,000 year old lost golden city of ancient Egypt discovered.'</em></p>
+        <p class="fn-bold">It's their city. Amenhotep III and Tiye. Their golden buried city — unearthed beginning September 2020, published April 9th. The name of the city is ATEN. It means sun. Solar disk.</p>
+        <p>I'm not saying our expedition impacted the recovery of this city. But I'm also not saying it didn't.</p>
+      </div>
+
+      <p>We began taking clients on expeditions with us where we connected their regular reality with the amplified fantasy world we occupied. It worked. The brains of our clients used 'still frames' from the expeditions to bridge them into new reality outcomes.</p>
+      <p>These images are artifacts from the machine. Origami sculptures made out-of-time. Gazing upon them can connect you with the server that hosts the rule-set for the game. They are rips in the fabric of space-time.</p>
+      <span class="lone">Play.</span>
+    </div>
+  </div>
+    </div>
+  </div>
+
+  <!-- TEXT TWO -->
+  <div class="text-block">
+    <span class="text-tag">Text Two</span>
+    <div class="text-heading">The Inscription</div>
+    <div class="text-frame">The clay tablet is the inscription principle. The rules carved into the most durable medium so the cosmos can read them across any time coordinate. This is the conceptual basis for the ceramic vessel (Artifact 05) and the Memory Archive simultaneously.</div>
+
+    <div class="text-content">
+      <p>The son of a former governor is building something in a place where it hasn't happened yet. Codename: Pink Flamingo.</p>
+      <p><em>'Doing big changes double déjà vu really fast. Got there by doing the thing I was avoiding most.'</em></p>
+      <p>He resists the temptation to tell people about the nature of reality. <em>'Otherwise, the dream collapses and it's harder to render interesting feedback,'</em> he said.</p>
+      <p>But he still wanted to write the playbook. For us, primarily. <em>'As we progress the game, it'll be harder to distinguish what's real.'</em></p>
+      <p>We hatched a plan to carve the rules into a clay tablet and encode them in cuneiform.</p>
+      <p>Cuneiform is the oldest language and clay a robust storage material. Since time is relative, the tablet could be accessed by any possible being at any possible time.</p>
+      <p><em>'Since clay has a bigger timeline of existence, your work has more chances of being read by the cosmos. It will be there when we're gone. Even if the internet collapses.'</em></p>
+    </div>
+  </div>
+
+  <!-- TEXT THREE -->
+  <div class="text-block">
+    <span class="text-tag">Text Three</span>
+    <div class="text-heading">The Oracle</div>
+    <div class="text-frame">The confirmation. The time machine is already being built by someone who can see one of its futures. When attuned observers experience the installation, it grants entry into an etheric version of the time machine. Once stability is reached, there will be a physical version — built by Everglade.</div>
+
+    <div class="text-content">
+      <p>I started writing at the volcanic rocks of Mount Shasta where I was routed into an ex-American-military scientist (codename: Everglade) who worked in the underground 'black ops' projects. He asked where I live.</p>
+      <p><em>'Nowhere. I am around the world building a time machine.'</em></p>
+      <p>I've been saying that over and over for two years like a kid who keeps getting asked what they want for Christmas. It's also how the game functions. Keywords string into seed phrases for the cold storage wallets around our junk DNA.</p>
+      <p>He said, <em>'I can help you with that. I've already made three of them. That's what alien craft are: time machines.'</em></p>
+      <p>He took us to his laboratory. As we drove, I asked why he was helping me.</p>
+      <p><em>'Because I can see the future,'</em> he said. <em>'Well, one of them,'</em> he adjusted.</p>
+      <p>'What does that mean? Did you know I was coming?'</p>
+      <p><em>'Not you, specifically. But I knew someone would come and ask me about this and I am to give that person what they need.'</em></p>
+      <span class="lone">The role of the oracle isn't to foretell the future. It is to ensure it.</span>
+    </div>
+  </div>
+
+</div>
+
+
+</body>
+</html>
